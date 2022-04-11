@@ -116,3 +116,4 @@ The last step of the release process creates artifacts for the new version of th
 | 2022-06-01 | v0.53.0 | @Aneurysm9      |
 | 2022-06-15 | v0.54.0 | @mx-psi         |
 | 2022-06-29 | v0.55.0 | @tigrannajaryan |
+| 2022-06-29 | v0.56.0 | @test           |
