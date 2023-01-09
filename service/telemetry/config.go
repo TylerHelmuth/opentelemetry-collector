@@ -125,6 +125,31 @@ type TracesConfig struct {
 	// tracecontext and  b3 are supported. By default, the value is set to empty list and
 	// context propagation is disabled.
 	Propagators []string `mapstructure:"propagators"`
+
+	TracerProvider TracerProviderConfig `mapstructure:"tracer_provider"`
+}
+
+type TracerProviderConfig struct {
+	Exporters      map[string]Exporter `mapstructure:"exporters"`
+	SpanProcessors []SpanProcessor     `mapstructure:"span_processors"`
+}
+
+type Exporter struct {
+	Endpoint string `mapstructure:"endpoint"`
+	timeout  int64  `mapstructure:"timeout"`
+}
+
+type SpanProcessor struct {
+	Name string `mapstructure:"name"`
+	Args string `mapstructure:"args"`
+}
+
+type SpanProcessorArguments struct {
+	ScheduleDelay      int64  `mapstructure:"schedule_delay"`
+	ExportTimeout      int64  `mapstructure:"export_timeout"`
+	MaxQueueSize       int64  `mapstructure:"max_queue_size"`
+	MaxExportBatchSize int64  `mapstructure:"max_export_batch_size"`
+	Exporter           string `mapstructure:"exporter"`
 }
 
 // Validate checks whether the current configuration is valid
