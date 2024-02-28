@@ -1059,6 +1059,14 @@ func TestDefaultStreamInterceptorMissingMetadata(t *testing.T) {
 	assert.Equal(t, errMetadataNotFound, err)
 }
 
+func TestNewDefaultKeepaliveClientConfig(t *testing.T) {
+	expectedDefaultConfig := KeepaliveClientConfig{
+		Timeout: 20 * time.Second,
+	}
+	defaultConfig := NewDefaultKeepaliveClientConfig()
+	require.Equal(t, expectedDefaultConfig, defaultConfig)
+}
+
 type mockServerStream struct {
 	grpc.ServerStream
 	ctx context.Context

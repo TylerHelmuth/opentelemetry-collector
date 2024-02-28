@@ -46,6 +46,13 @@ type KeepaliveClientConfig struct {
 	PermitWithoutStream bool          `mapstructure:"permit_without_stream"`
 }
 
+// NewDefaultKeepaliveClientConfig returns a NewDefaultKeepaliveClientConfig with all default values set.
+func NewDefaultKeepaliveClientConfig() KeepaliveClientConfig {
+	return KeepaliveClientConfig{
+		Timeout: 20 * time.Second,
+	}
+}
+
 // ClientConfig defines common settings for a gRPC client configuration.
 type ClientConfig struct {
 	// The target to which the exporter is going to send traces or metrics,
@@ -88,6 +95,13 @@ type ClientConfig struct {
 
 	// Auth configuration for outgoing RPCs.
 	Auth *configauth.Authentication `mapstructure:"auth"`
+}
+
+// NewDefaultClientConfig returns a NewDefaultKeepaliveClientConfig with all default values set.
+func NewDefaultClientConfig() ClientConfig {
+	return ClientConfig{
+		Timeout: 20 * time.Second,
+	}
 }
 
 // KeepaliveServerConfig is the configuration for keepalive.
